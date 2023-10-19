@@ -15,7 +15,7 @@ const pets = [
     specialSkill:
       "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
     type: "dino",
-    imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg",
+    imageUrl: "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2ZlYXRoZXJlZGRpbm9zLXVyc3NjaHdlaXR6ZXItaW1hZ25vLWdldHR5aW1hZ2VzLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODI4fX19",
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ const pets = [
     specialSkill: "Comfortable in the outdoors for up to eight hours.",
     type: "dino",
     imageUrl:
-      "http://www.theouthousers.com/images/jck//ThanosCopter/news/grumpasaur.jpg",
+      "https://cdn.sci.news/images/enlarge10/image_11996_1e-Fukuivenator-paradoxus.jpg",
   },
   {
     id: 9,
@@ -96,7 +96,7 @@ const pets = [
     specialSkill: "Can be around food without staring creepily at it.",
     type: "dino",
     imageUrl:
-      "http://www.cantref.com/userfiles/events/walking%20dino.jpg?w=600",
+      "https://www.fossilera.com/media/W1siZiIsIjIwMjAvMDEvMTYvMTZfNTFfMjJfNDIxX2Rpbm9zYXVyXzM1NDI1NjZfMTkyMC5qcGciXV0/dinosaur-3542566_1920.jpg",
   },
   {
     id: 12,
@@ -142,7 +142,7 @@ const pets = [
     specialSkill: "Drives at a safe rate of speed in snow or rain.",
     type: "dino",
     imageUrl:
-      "https://images.readwrite.com/wp-content/uploads/2018/03/t-rex-dino-quiz-e1490854556549.jpg",
+      "https://images.newscientist.com/wp-content/uploads/2021/10/13130821/PRI_204705771.jpg",
   },
   {
     id: 17,
@@ -160,7 +160,7 @@ const pets = [
     specialSkill: "Proficient in air guitar",
     type: "dino",
     imageUrl:
-      "https://www.nation.co.ke/image/view/-/4078922/highRes/1742693/-/maxw/600/-/1453yvh/-/DINO.jpg",
+      "https://www.leugardens.org/wp-content/uploads/2023/04/Allosaurus-Baby-Close-Up-660x330.jpg",
   },
   {
     id: 19,
@@ -186,7 +186,7 @@ const pets = [
     specialSkill: "Owns a Nintendo Power Glove.",
     type: "dino",
     imageUrl:
-      "https://img.buzzfeed.com/buzzfeed-static/static/2015-11/2/12/enhanced/webdr15/anigif_enhanced-29802-1446485228-10.gif?crop=250:165;0,0&downsize=715",
+      "https://oneplymouth.co.uk/wp-content/uploads/2023/04/Dinosaurs-in-the-Park-Plymouth-Dino-T-rex-scaled.jpg",
   },
   {
     id: 22,
@@ -268,9 +268,15 @@ const pets = [
     specialSkill: "Doesn’t get weirded out by the word “moist.”",
     type: "dino",
     imageUrl:
-      "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119",
+      "https://i.kinja-img.com/image/upload/c_fit,f_auto,g_center,q_60,w_645/a7d2f74bdbb6b00665c864d01edddf0f.jpg",
   },
 ];
+
+// const myFunction = () => {
+
+// }
+
+// myFunction()
 
 console.log("app");
 
@@ -295,6 +301,7 @@ for (let i = 0; i < pets.length; i++) {
 }
 
 app.innerHTML = domString;
+
 
 
 

@@ -15,7 +15,8 @@ const pets = [
     specialSkill:
       "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
     type: "dino",
-    imageUrl: "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2ZlYXRoZXJlZGRpbm9zLXVyc3NjaHdlaXR6ZXItaW1hZ25vLWdldHR5aW1hZ2VzLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODI4fX19",
+    imageUrl:
+      "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2ZlYXRoZXJlZGRpbm9zLXVyc3NjaHdlaXR6ZXItaW1hZ25vLWdldHR5aW1hZ2VzLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODI4fX19",
   },
   {
     id: 3,
@@ -115,7 +116,7 @@ const pets = [
       "Expertly quotes and recognizes dialogue from early seasons of The Simpsons.",
     type: "dog",
     imageUrl:
-      "http://1kjkdg1axrkd2g03cnboj761.wpengine.netdna-cdn.com/wp-content/uploads/2017/12/braydon-anderson-105552-e1512684107659.jpg",
+      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 14,
@@ -151,7 +152,7 @@ const pets = [
     specialSkill:
       "Does not freak out if you haven’t seen his favorite movie (The Big Lebowski).",
     type: "cat",
-    imageUrl: "http://www.funnycatsite.com/pictures/Close_Up_Yawn.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 18,
@@ -177,7 +178,7 @@ const pets = [
     color: "Black",
     specialSkill: "Uses litter box at appropriate hours.",
     type: "cat",
-    imageUrl: "http://www.funnycatsite.com/pictures/Lazy_White_Cat.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 21,
@@ -195,7 +196,7 @@ const pets = [
     specialSkill: "Is comfortable with jokes about his receding hairline.",
     type: "cat",
     imageUrl:
-      "http://funnyanimalphoto.com/wp-content/uploads/2013/08/cat_caught_mouse_thegatewaypundit.jpg",
+      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 23,
@@ -214,7 +215,7 @@ const pets = [
       "Participates in karaoke but does not force others to go out to karaoke.",
     type: "dog",
     imageUrl:
-      "http://www.dogbreedplus.com/dog_breeds/images/basset-hound-4.jpg",
+      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 25,
@@ -223,7 +224,7 @@ const pets = [
     specialSkill: "Knows the words to 4 rap songs.",
     type: "cat",
     imageUrl:
-      "http://funbk.s3.amazonaws.com/wp-content/uploads/2016/06/funny-cat-video-which-will-make-you-laugh-louder.jpg",
+      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 26,
@@ -278,33 +279,72 @@ const pets = [
 
 // myFunction()
 
-console.log("app");
-
-const app = document.querySelector("#app");
-let domString = "";
-for (let i = 0; i < pets.length; i++) {
-  console.log(i);
-
-  domString += `<div class="card" style="width: 18rem;">
-  <div class="card-header">
-  ${pets[i].name}
-  </div>
-  <img src="${pets[i].imageUrl}" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">${pets[i].color}</h5>
-    <p class="card-text">${pets[i].specialSkill}</p>
+// Part 2: HTML Representation of Data
+// Using the data provided in main.js, take a look at the format and update the data if needed based on the data example above.
+// Loop through each object and render each item to the DOM
+const renderToDom = (array) => {
+  let domString = "";
+  for (object of array) {
+    domString += `<div class="card element text-center animal "  style="width: 1rem;">
+    <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
+    <img src="${object.imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">        
+        <p class="card-text">color: ${object.color}</p>
+        <p>special skill: ${object.specialSkill}</p>        
+       
+        <div class="card-footer"><p>type: ${object.type}</p></div>
     </div>
-    <div class="card-body">
-    </div>    
-    <div id="card-footer text-body-secondary">i'm a ${pets[i].type}!</div>
-  </div>`;
-}
+    </div>`;
+  }
+  const app = document.querySelector("#app");
+  app.innerHTML = domString;
+};
 
-app.innerHTML = domString;
+renderToDom(pets);
 
+//  Part 3: Event Listeners
+// As a user, I want to see 3 category(type) buttons rendered at the top of the page. Each should be a different color. These can be hard-coded in the HTML.
+// I want to be able to click one of the 3 buttons, then only the cards that are in the category(type) should show.
+// There should be some way for the user to unfilter the results (ie All Pets button).
 
+const catButton = document.querySelector("#cat");
+const dogButton = document.querySelector("#dog");
+const dinoButton = document.querySelector("#dino");
+const allPetsButton = document.querySelector("#allPets");
 
+catButton.addEventListener("click", () => {
+  renderPetsOfType(pets, "cat");
+});
 
+dogButton.addEventListener("click", () => {
+  renderPetsOfType(pets, "dog");
+});
 
+dinoButton.addEventListener("click", () => {
+  renderPetsOfType(pets, "dino");
+});
 
+allPetsButton.addEventListener("click", () => {
+  renderToDom(pets);
+});
 
+const renderPetsOfType = (petsArr, animalType) => {
+  console.log("filter function: ", petsArr, animalType);
+  // let petArray = [];
+
+  let petArray = petsArr.filter((pet) => pet.type == animalType);
+
+  // for(pet of array){
+  //   if(pet.type === animalType){
+  //     petArray.push(pet);
+  //   }
+  // }
+  renderToDom(petArray);
+};
+
+// Part 4: Create Pets
+// Create a form that allows a user to add pets with a submit button
+// When the submit button is pressed, the pet is added to the array and the DOM rerenders adding the new pet on the DOM.
+
+//  Part 5: Delete Pets
+// Each card should have a delete button that when clicked removes the pet from the array and re-renders the DOM

@@ -1,29 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Adoption</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <form>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="pet-name"
+          placeholder="Pet's name"
+        />
+        <label for="pet-name"></label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="pet-color"
+          placeholder="Brown"
+        />
+        <label for="pet-color">Pet's Color</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="special-skill"
+          placeholder="Tricks"
+        />
+        <label for="special-skill">Pet's Skill</label>
+      </div>
+      <div class="form-floating ">
+        <label >Type of Animal</label>
+
+        <div class="form-check form-check-inline ">
+          <input
+            class="form-check-input pet-option"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="cat"
+          />
+          <label class="form-check-label" for="inlineRadio1">cat</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input pet-option"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="dog"
+          />
+          <label class="form-check-label" for="inlineRadio2">dog</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input pet-option"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio3"
+            value="dino"
+          />
+          <label class="form-check-label" for="inlineRadio3">dino</label>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="imageUrl"
+          placeholder="www.photo.com"
+        />
+        <label for="ImageUrl">Pet Image Link</label>
+      </div>
+      <button type="submit" class="btn btn-success" id="form-submit">
+        Add Pet
+      </button>
+    </form>
 
     <div id="button-group" class="text-center">
-        <button type="button" id="cat" class="btn btn-primary">cat</button>
-        <button type="button" id="dog" class="btn btn-warning">dog</button>
-        <button type="button" id="dino" class="btn btn-danger">dino</button>
-        <button type="button" id="allPets" class="btn btn-info">all pets</button>
-
+      <button type="button" id="cat" class="btn btn-primary">cat</button>
+      <button type="button" id="dog" class="btn btn-warning">dog</button>
+      <button type="button" id="dino" class="btn btn-danger">dino</button>
+      <button type="button" id="allPets" class="btn btn-info">all pets</button>
     </div>
-    <div id="app" class="text-center">
+    <div id="app" class="text-center"></div>
 
-        
-   
-
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

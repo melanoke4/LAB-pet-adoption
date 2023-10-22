@@ -115,8 +115,7 @@ const pets = [
     specialSkill:
       "Expertly quotes and recognizes dialogue from early seasons of The Simpsons.",
     type: "dog",
-    imageUrl:
-      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 14,
@@ -195,8 +194,7 @@ const pets = [
     color: "Orange",
     specialSkill: "Is comfortable with jokes about his receding hairline.",
     type: "cat",
-    imageUrl:
-      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 23,
@@ -214,8 +212,7 @@ const pets = [
     specialSkill:
       "Participates in karaoke but does not force others to go out to karaoke.",
     type: "dog",
-    imageUrl:
-      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 25,
@@ -223,8 +220,7 @@ const pets = [
     color: "Red",
     specialSkill: "Knows the words to 4 rap songs.",
     type: "cat",
-    imageUrl:
-      "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
+    imageUrl: "http://img.izismile.com/img/img2/20090219/cats_02.jpg",
   },
   {
     id: 26,
@@ -282,21 +278,26 @@ const pets = [
 // Part 2: HTML Representation of Data
 // Using the data provided in main.js, take a look at the format and update the data if needed based on the data example above.
 // Loop through each object and render each item to the DOM
+const app = document.querySelector("#app");
+
 const renderToDom = (array) => {
   let domString = "";
   for (object of array) {
     domString += `<div class="card element text-center animal "  style="width: 1rem;">
+    
     <div class="card-header"><h5 class="card-title">${object.name}</h5></div>
-    <img src="${object.imageUrl}" class="card-img-top" alt="...">
+    
+    <img src="${object.imageUrl}" class="card-img-top imgs" alt="imgaltname">
+   
     <div class="card-body">        
-        <p class="card-text">color: ${object.color}</p>
-        <p>special skill: ${object.specialSkill}</p>        
+        <p class="card-text">${object.color}</p>
+        <p>${object.specialSkill}</p>        
        
-        <div class="card-footer"><p>type: ${object.type}</p></div>
+        <footer class="card-footer"><p>${object.type}</p></footer>
+        <button class="dwlwtw--3 delbtn">Delete</button>
     </div>
     </div>`;
   }
-  const app = document.querySelector("#app");
   app.innerHTML = domString;
 };
 
@@ -345,6 +346,41 @@ const renderPetsOfType = (petsArr, animalType) => {
 // Part 4: Create Pets
 // Create a form that allows a user to add pets with a submit button
 // When the submit button is pressed, the pet is added to the array and the DOM rerenders adding the new pet on the DOM.
+const form = document.querySelector("form");
+
+const createPet = (e) => {
+  e.preventDefault();
+  let petOptions = Array.from(document.querySelectorAll(".pet-option"))
+  let findCallback = (radio)=>radio.checked
+  let selectedPetOption = petOptions.find(findCallback).value
+  console.log("e", e, "petOption", selectedPetOption)
+
+  const newPetObject = {
+    id: pets.length + 1,
+    name: document.querySelector("#pet-name").value,
+    color: document.querySelector("#pet-color").value,
+    specialSkill: document.querySelector("#special-skill").value,
+    type: selectedPetOption
+  };
+  // pets.push(newPetObject);
+  pets.unshift(newPetObject)
+  renderToDom(pets);
+  form.reset();
+};
+
+form.addEventListener("submit", createPet);
 
 //  Part 5: Delete Pets
 // Each card should have a delete button that when clicked removes the pet from the array and re-renders the DOM
+// const app = document.querySelector("app");
+
+const deletePet = (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex((object) => object.id === Number(id));
+    pets.splice(index, 1);
+    renderToDom(pets);
+  }
+};
+app.addEventListener("click", deletePet);
+

@@ -1,5 +1,14 @@
 body {
-    background-color: rgb(156, 118, 91);
+    background-color: rgb(247, 243, 240);
+    background-image: url("https://images.unsplash.com/photo-1550895030-823330fc2551?auto=format&fit=crop&q=80&w=3087&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+     * Set the height */
+     height: 400px;
+    /* Create a parallax effect */
+     background-attachment: fixed;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+   
 }
 
 #app {
@@ -20,9 +29,9 @@ margin-block: 10px;
   margin-bottom: 20px;
   /* margin-block: 20px; */
 }
-
-/* .cat {
-
+/* 
+#cat {
+  
 }
 
 .dog {
@@ -31,16 +40,22 @@ margin-block: 10px;
 
 .dino {
 
-}
+} */
 
-.imgs {
+/* .imgs {
     
 }
 
 .card-footer {
     
-} */
+}  */
 
 .delbtn {
 color: red;
+}
+
+@media only screen and (max-device-width: 1366px) {
+    .example {
+        background-attachment: scroll;
+   }
 }

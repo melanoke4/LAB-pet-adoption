@@ -294,7 +294,7 @@ const renderToDom = (array) => {
         <p>${object.specialSkill}</p>        
        
         <footer class="card-footer"><p>${object.type}</p></footer>
-        <button class="dwlwtw--3 delbtn">Delete</button>
+        <button id="delete--${object.id}" class="delbtn">Delete </button>
     </div>
     </div>`;
   }
@@ -330,17 +330,17 @@ allPetsButton.addEventListener("click", () => {
 });
 
 const renderPetsOfType = (petsArr, animalType) => {
-  console.log("filter function: ", petsArr, animalType);
-  // let petArray = [];
-
+  // console.log("filter function: ", petsArr, animalType);
   let petArray = petsArr.filter((pet) => pet.type == animalType);
-
-  // for(pet of array){
+  // filter() is 
+  renderToDom(petArray);
+  
+  // let petArray = [];
+  // for(pet of petsArr){
   //   if(pet.type === animalType){
   //     petArray.push(pet);
   //   }
   // }
-  renderToDom(petArray);
 };
 
 // Part 4: Create Pets
@@ -350,20 +350,19 @@ const form = document.querySelector("form");
 
 const createPet = (e) => {
   e.preventDefault();
-  let petOptions = Array.from(document.querySelectorAll(".pet-option"))
-  let findCallback = (radio)=>radio.checked
-  let selectedPetOption = petOptions.find(findCallback).value
-  console.log("e", e, "petOption", selectedPetOption)
+  let petOptions = Array.from(document.querySelectorAll(".pet-option"));
+  let selectedPetOption = petOptions.find((radio) => radio.checked).value;
+  // console.log("e", e, "petOption", selectedPetOption);
 
   const newPetObject = {
     id: pets.length + 1,
     name: document.querySelector("#pet-name").value,
     color: document.querySelector("#pet-color").value,
     specialSkill: document.querySelector("#special-skill").value,
-    type: selectedPetOption
+    type: selectedPetOption,
   };
   // pets.push(newPetObject);
-  pets.unshift(newPetObject)
+  pets.unshift(newPetObject);
   renderToDom(pets);
   form.reset();
 };
@@ -372,15 +371,15 @@ form.addEventListener("submit", createPet);
 
 //  Part 5: Delete Pets
 // Each card should have a delete button that when clicked removes the pet from the array and re-renders the DOM
-// const app = document.querySelector("app");
 
 const deletePet = (e) => {
   if (e.target.id.includes("delete")) {
     const [, id] = e.target.id.split("--");
     const index = pets.findIndex((object) => object.id === Number(id));
+    // console.log(index, object, object.id, Number(id)
     pets.splice(index, 1);
     renderToDom(pets);
   }
 };
 app.addEventListener("click", deletePet);
-
+// const app = document.querySelector("app");

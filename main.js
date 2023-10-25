@@ -269,10 +269,6 @@ const pets = [
   },
 ];
 
-
-
-// const app = document.querySelector("#app");
-
 const renderToDom = (array) => {
   let domString = "";
   for (object of array) {
@@ -295,75 +291,61 @@ const renderToDom = (array) => {
 };
 
 const events = () => {
-    // organized all of our querySelectors
-    const app = document.querySelector("#app")
-    const form = document.querySelector("form")
-    const filterButtons = document.querySelector("#button-group")
+  const app = document.querySelector("#app");
+  const form = document.querySelector("form");
+  const filterButtons = document.querySelector("#button-group");
 
-    filterButtons.addEventListener("click", (e) => {
-      const id = e.target.id
-      console.log("is this here", id, e);
-      const possibletypes = ["cat", "dog", "dino"]
-      
-      if(id === "all"){
-        renderToDom(pets)
-      } else if (possibletypes.includes(id)){
-        filterPetTypes(id)
-      }
-    })
-}
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let petOptions = Array.from(document.querySelectorAll(".pet-option"));
+    let selectedPetOption = petOptions.find((radio) => radio.checked).value;
 
-// Our init function, starts our app
+    const newPetObject = {
+      id: pets.length + 1,
+      name: document.querySelector("#pet-name").value,
+      color: document.querySelector("#pet-color").value,
+      specialSkill: document.querySelector("#special-skill").value,
+      type: selectedPetOption,
+    };
+
+    pets.unshift(newPetObject);
+    renderToDom(pets);
+    form.reset();
+  });
+
+  app.addEventListener("click", (e) => {
+    if (e.target.id.includes("delete")) {
+      const [, id] = e.target.id.split("--");
+      const index = pets.findIndex((object) => object.id === Number(id));
+
+      pets.splice(index, 1);
+      renderToDom(pets);
+    }
+  });
+
+  filterButtons.addEventListener("click", (e) => {
+    const id = e.target.id;
+    // console.log("is this here", id, e);
+    const possibletypes = ["cat", "dog", "dino"];
+
+    if (id === "all") {
+      renderToDom(pets);
+    } else if (possibletypes.includes(id)) {
+      filterPetTypes(id);
+    }
+  });
+};
+
 const startApp = () => {
-  renderToDom(pets)
-  events()
-}
+  renderToDom(pets);
+  events();
+};
 
-startApp()
+startApp();
 
-
-// filter 
+// filter
 const filterPetTypes = (animalType) => {
   let petArray = pets.filter((pet) => pet.type == animalType);
 
   renderToDom(petArray);
-
 };
-
-
-
-const createPet = (e) => {
-  e.preventDefault();
-  let petOptions = Array.from(document.querySelectorAll(".pet-option"));
-  let selectedPetOption = petOptions.find((radio) => radio.checked).value;
-  // console.log("e", e, "petOption", selectedPetOption);
-
-  const newPetObject = {
-    id: pets.length + 1,
-    name: document.querySelector("#pet-name").value,
-    color: document.querySelector("#pet-color").value,
-    specialSkill: document.querySelector("#special-skill").value,
-    type: selectedPetOption,
-  };
-  // pets.push(newPetObject);
-  pets.unshift(newPetObject);
-  renderToDom(pets);
-  form.reset();
-};
-
-form.addEventListener("submit", createPet);
-
-//  Part 5: Delete Pets
-// Each card should have a delete button that when clicked removes the pet from the array and re-renders the DOM
-
-const deletePet = (e) => {
-  if (e.target.id.includes("delete")) {
-    const [, id] = e.target.id.split("--");
-    const index = pets.findIndex((object) => object.id === Number(id));
-    // console.log(index, object, object.id, Number(id)
-    pets.splice(index, 1);
-    renderToDom(pets);
-  }
-};
-app.addEventListener("click", deletePet);
-// const app = document.querySelector("app");

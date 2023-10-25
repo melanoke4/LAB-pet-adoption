@@ -348,4 +348,6 @@ const filterPetTypes = (animalType) => {
   let petArray = pets.filter((pet) => pet.type == animalType);
 
   renderToDom(petArray);
+
 };
+

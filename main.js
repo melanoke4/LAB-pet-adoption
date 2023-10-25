@@ -269,16 +269,9 @@ const pets = [
   },
 ];
 
-// const myFunction = () => {
 
-// }
 
-// myFunction()
-
-// Part 2: HTML Representation of Data
-// Using the data provided in main.js, take a look at the format and update the data if needed based on the data example above.
-// Loop through each object and render each item to the DOM
-const app = document.querySelector("#app");
+// const app = document.querySelector("#app");
 
 const renderToDom = (array) => {
   let domString = "";
@@ -301,52 +294,43 @@ const renderToDom = (array) => {
   app.innerHTML = domString;
 };
 
-renderToDom(pets);
+const events = () => {
+    // organized all of our querySelectors
+    const app = document.querySelector("#app")
+    const form = document.querySelector("form")
+    const filterButtons = document.querySelector("#button-group")
 
-//  Part 3: Event Listeners
-// As a user, I want to see 3 category(type) buttons rendered at the top of the page. Each should be a different color. These can be hard-coded in the HTML.
-// I want to be able to click one of the 3 buttons, then only the cards that are in the category(type) should show.
-// There should be some way for the user to unfilter the results (ie All Pets button).
+    filterButtons.addEventListener("click", (e) => {
+      const id = e.target.id
+      console.log("is this here", id, e);
+      const possibletypes = ["cat", "dog", "dino"]
+      
+      if(id === "all"){
+        renderToDom(pets)
+      } else if (possibletypes.includes(id)){
+        filterPetTypes(id)
+      }
+    })
+}
 
-const catButton = document.querySelector("#cat");
-const dogButton = document.querySelector("#dog");
-const dinoButton = document.querySelector("#dino");
-const allPetsButton = document.querySelector("#allPets");
+// Our init function, starts our app
+const startApp = () => {
+  renderToDom(pets)
+  events()
+}
 
-catButton.addEventListener("click", () => {
-  renderPetsOfType(pets, "cat");
-});
+startApp()
 
-dogButton.addEventListener("click", () => {
-  renderPetsOfType(pets, "dog");
-});
 
-dinoButton.addEventListener("click", () => {
-  renderPetsOfType(pets, "dino");
-});
+// filter 
+const filterPetTypes = (animalType) => {
+  let petArray = pets.filter((pet) => pet.type == animalType);
 
-allPetsButton.addEventListener("click", () => {
-  renderToDom(pets);
-});
-
-const renderPetsOfType = (petsArr, animalType) => {
-  // console.log("filter function: ", petsArr, animalType);
-  let petArray = petsArr.filter((pet) => pet.type == animalType);
-  // filter() is 
   renderToDom(petArray);
-  
-  // let petArray = [];
-  // for(pet of petsArr){
-  //   if(pet.type === animalType){
-  //     petArray.push(pet);
-  //   }
-  // }
+
 };
 
-// Part 4: Create Pets
-// Create a form that allows a user to add pets with a submit button
-// When the submit button is pressed, the pet is added to the array and the DOM rerenders adding the new pet on the DOM.
-const form = document.querySelector("form");
+
 
 const createPet = (e) => {
   e.preventDefault();

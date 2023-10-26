@@ -13,93 +13,101 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <form class="object-fit-cover rounded" style="width: 20%;">
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="pet-name"
-          placeholder="Pet's name"
-        />
-        <label for="pet-name">Pet's Name</label>
-      </div>
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="pet-color"
-          placeholder="Brown"
-        />
-        <label for="pet-color">Pet's Color</label>
-      </div>
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="special-skill"
-          placeholder="Tricks"
-        />
-        <label for="special-skill">Pet's Skill</label>
-      </div>
-      <!--  -->
-      <!--  -->
-      <!--  -->
-      <div class="form-floating form-control">
-        <!-- <label>Type of Animal</label> -->
 
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input pet-option"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio1"
-            value="cat"
-          />
-          <label class="form-check-label" for="inlineRadio1">cat</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input pet-option"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio2"
-            value="dog"
-          />
-          <label class="form-check-label" for="inlineRadio2">dog</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input pet-option"
-            type="radio"
-            name="inlineRadioOptions"
-            id="inlineRadio3"
-            value="dino"
-          />
-          <label class="form-check-label" for="inlineRadio3">dino</label>
-        </div>
-      </div>
-      <!--  -->
-      <!--  -->
-<!--  -->
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="imageUrl"
-          placeholder="www.photo.com"
-          />
-          <label for="imageUrl">Pet Image Link</label>
-      </div>
-      <button type="submit" class="btn btn-success" id="form-submit">
-        Add Pet
-      </button>
-    </form>
     <div id="button-group" class="object-fit-cover rounded text-center">
-      <button type="button" id="cat" class="btn btn-primary" >cat</button>
-      <button type="button" id="dog" class="btn btn-warning">dog</button>
-      <button type="button" id="dino" class="btn btn-danger">dino</button>
-      <button type="button" id="all" class="btn btn-info">all pets</button>
+      <button type="button" id="cat" class="btn cat-button" >cat</button>
+      <button type="button" id="dog" class="btn dog-button">dog</button>
+      <button type="button" id="dino" class="btn dino-button">dino</button>
+      <button type="button" id="all" class="btn all-button">all pets</button>
+      <button class="open-button btn" id="add" onclick="openForm()">add new pet</button>
+      <form action="/action_page.php" class="object-fit-cover form-container form-popup rounded" id="myForm" style="width: 20%;">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="pet-name"
+            placeholder="Pet's name" required
+          />
+          <label for="pet-name">Pet's Name</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="pet-color"
+            placeholder="Brown" required
+          />
+          <label for="pet-color">Pet's Color</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="special-skill"
+            placeholder="Tricks" required
+          />
+          <label for="special-skill">Pet's Skill</label>
+        </div>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <div class="form-floating form-control">
+          <!-- <label>Type of Animal</label> -->
+  
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input pet-option"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              value="cat"
+            />
+            <label class="form-check-label" for="inlineRadio1">cat</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input pet-option"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              value="dog"
+            />
+            <label class="form-check-label" for="inlineRadio2">dog</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input pet-option"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio3"
+              value="dino"
+            />
+            <label class="form-check-label" for="inlineRadio3">dino</label>
+          </div>
+        </div>
+        
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="imageUrl"
+            placeholder="www.photo.com" required
+            />
+            <label for="imageUrl">Pet Image Link</label>
+        </div>
+        <button type="submit" class="btn btn-success" id="form-submit">
+          Add Pet
+        </button>
+
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
     </div>
+
+
+
+
+   
+  
     <div id="app" class="text-center object-fit-cover rounded"></div>
 
     <script
